@@ -13,15 +13,20 @@ const App = () => {
   ];
 
   const detectTrustLevel = (content: string) => {
-    const match = content.match(/nivel de confianza: (\d+)/i);
+    // Use a flexible regex to detect "confianza" followed by a number
+    const match = content.match(/confianza.*?:\s*(\d+)/i);
     if (match) {
-      const trust = parseInt(match[1], 10);
+      const trust = parseInt(match[1], 10); // Extract the number
+      console.log(`Detected trust level: ${trust}`); // Debugging
       const trustLevel = trustLevels.find((level) =>
         level.range.includes(trust)
       );
       if (trustLevel) {
         setTrustImage(trustLevel.image); // Update the image
+        console.log(`Updated image to: ${trustLevel.image}`); // Debugging
       }
+    } else {
+      console.warn('No trust level detected in the message'); // Debugging
     }
   };
 

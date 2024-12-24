@@ -3,7 +3,7 @@ import { useState } from 'react';
 const App = () => {
   const [messages, setMessages] = useState<{ role: string; content: string }[]>([]);
   const [input, setInput] = useState('');
-  const [trustImage, setTrustImage] = useState('/images/trust-1-3.png'); // Default image
+  const [trustImage, setTrustImage] = useState('/images/trust-5.png'); // Start with trust level 5 image
 
   const trustLevels = [
     { range: [1, 3], image: '/images/trust-1-3.png' },
